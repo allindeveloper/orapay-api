@@ -27,7 +27,8 @@ export default async function handler(
   } else if (req.method === 'POST') {
     // Handle incoming messages
     const body = req.body;
-    
+    console.log(`Request body`, body);
+
     if (body && body.entry && body.entry[0].changes && body.entry[0].changes[0].value.messages) {
       const message = body.entry[0].changes[0].value.messages[0];
       const from = message.from; // The phone number of the user who sent the message
