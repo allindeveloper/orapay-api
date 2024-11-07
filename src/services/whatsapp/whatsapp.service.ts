@@ -1,6 +1,6 @@
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-const PHONE_NUMBER_ID = process.env.NEXT_PUBLIC_PHONE_NUMBER_ID;
+const BASE_URL = process.env.BASE_URL;
+const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 const NEXT_PUBLIC_ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN
 export class WhatsAppService {
     
