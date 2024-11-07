@@ -1,7 +1,7 @@
 
 const BASE_URL = process.env.BASE_URL;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
-const NEXT_PUBLIC_ACCESS_TOKEN = process.env.NEXT_PUBLIC_ACCESS_TOKEN
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN
 export class WhatsAppService {
     
 
@@ -21,7 +21,7 @@ export class WhatsAppService {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              Authorization: `Bearer ${NEXT_PUBLIC_ACCESS_TOKEN}`,
+              Authorization: `Bearer ${ACCESS_TOKEN}`,
             },
             body: JSON.stringify(payload),
           });
