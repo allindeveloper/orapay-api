@@ -33,10 +33,6 @@ export default async function handler(
       const from = message.from; // The phone number of the user who sent the message
       const msgBody = message.text?.body || '';
 
-      console.log(`Changes Object`, body.entry[0].changes[0]);
-
-      console.log(`Messages Object`, message);
-      
       console.log(`Received message from ${from}: ${msgBody}`);
 
       // Send a response back using WhatsApp API

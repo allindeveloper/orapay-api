@@ -12,7 +12,6 @@ export default async function handler(
 
   try {
     const foundHymn = await hymnService.getHymn(query, locale);
-    console.log("process.env", process.env)
     res.status(200).json(foundHymn);
   } catch (error) {
     res.status(500).json({ message: "Internal Server Error", error });
