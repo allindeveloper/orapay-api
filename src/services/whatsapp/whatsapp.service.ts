@@ -10,6 +10,7 @@ export class WhatsAppService {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
         const name = mostRecentMessage.contact?.profile?.name || 'User';
+        console.log("mostRecentMessage", mostRecentMessage)
         const isFirstMessage = ["hello", "hi"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
         
         if(isFirstMessage){

@@ -7,7 +7,7 @@ export const initialStep = (to: string, name: string) => {
             type: 'list',
             header: { type: 'text', text: `Hello dear ${name}` },
             body: {
-                text: `Welcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\n Please select one of the options below.`
+                text: `Welcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\nPlease select one of the options below.`
             },
             footer: { text: 'Powered by OraPay' },
             action: {
