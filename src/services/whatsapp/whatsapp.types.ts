@@ -3,11 +3,11 @@ export type WhatsAppMessagePayload = {
         body: string
     },
     from: string
-    contact: {
+    contacts: {
         profile?: {
             name?: string
         }
-    }
+    }[]
 }
 
 export type WhatsAppBody = {
