@@ -1,7 +1,23 @@
+export enum MessageType {
+    TEXT = "text",
+    INTERACTIVE = "interactive"
+}
+
+export type WhatsAppMessageInteractive = {
+    type: 'list_reply',
+    list_reply: {
+        id: string,
+        title: string,
+        description?: string,
+    }
+}
+
 export type WhatsAppMessagePayload = {
     text?: {
         body: string
     },
+    type: MessageType;
+    interactive?: WhatsAppMessageInteractive
     from: string
     contacts: {
         profile?: {
@@ -18,4 +34,11 @@ export type WhatsAppBody = {
             }
         }[]
     }[]
+}
+
+export enum STEP {
+    Open = 1,
+    Transfer = 2,
+    Beneficiaries = 3,
+    CustomerSupport = 4
 }
