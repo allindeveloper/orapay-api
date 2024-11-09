@@ -28,23 +28,36 @@ export const initialStep = (to: string, name: string) => {
     }
 };
 
+// export const buttonMessage = (to: string) => ({
+//     messaging_product: 'whatsapp',
+//     to,
+//     type: 'interactive',
+//     interactive: {
+//         type: 'button',
+//         body: {
+//             text: `Thank you for contacting Orapay agent! \nHow may we assist you today?`
+//         },
+//         action: {
+//             buttons: [
+//                 {
+//                     type: 'url',
+//                     title: 'Speak to Support Team',
+//                     url: '+2347034367931'
+//                 }
+//             ]
+//         }
+//     }
+// })
+
 export const buttonMessage = (to: string) => ({
-    messaging_product: 'whatsapp',
+    messaging_product: "whatsapp",
     to,
-    type: 'interactive',
-    interactive: {
-        type: 'button',
-        body: {
-            text: `Thank you for contacting Orapay agent! \nHow may we assist you today?`
-        },
-        action: {
-            buttons: [
-                {
-                    type: 'url',
-                    title: 'Speak to Support Team',
-                    url: '+2347034367931'
-                }
-            ]
+    type: "template",
+    template: {
+        name: "customersupport",
+        language: {
+            code: "en"
         }
+
     }
 })

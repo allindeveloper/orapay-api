@@ -23,6 +23,7 @@ export class WhatsAppService {
         const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE
         if (isFromInteractiveMessage) {
             const customerChoice = mostRecentMessage.interactive?.list_reply.title
+            console.log("customer choice", customerChoice)
             // handle major actions from interactive list
             if (customerChoice?.includes("Customer Support")) {
                 await this.handleCustomerSupport(fromPhoneNumber)
