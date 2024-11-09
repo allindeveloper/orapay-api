@@ -41,8 +41,8 @@ export const buttonMessage = (to: string) => ({
             buttons: [
                 {
                     type: 'url',
-                    phone_number: '+2347034367931',
-                    text: 'Speak to Support Team'
+                    text: '+2347034367931',
+                    url: 'Speak to Support Team'
                 }
             ]
         }
