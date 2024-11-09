@@ -1,12 +1,25 @@
+import { initialStep } from "./whatsapp.step";
+import { WhatsAppMessagePayload } from "./whatsapp.types";
 
 const BASE_URL = process.env.BASE_URL;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN
 export class WhatsAppService {
     
+    triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
+        const mostRecentMessage = messageDto[0];
+        const fromPhoneNumber = mostRecentMessage.from;
+        const name = mostRecentMessage.contact?.profile?.name || 'User';
+        const isFirstMessage = ["hello", "hi"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
+        
+        if(isFirstMessage){
+            const payload = initialStep(fromPhoneNumber, name);
+            await this.sendInteractiveWhatsAppMessage(payload)
+        }
 
-    // Function to send a message back using WhatsApp API
-    sendWhatsAppMessage = async (to: string, message: string) => {
+    }
+    
+    sendRegularWhatsAppMessage = async (to: string, message: string) => {
         const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
       
         const payload = {
@@ -15,6 +28,26 @@ export class WhatsAppService {
           type: 'text',
           text: { body: message },
         };
+      
+        try {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${ACCESS_TOKEN}`,
+            },
+            body: JSON.stringify(payload),
+          });
+      
+          const data = await response.json();
+          console.log('Message sent:', data);
+        } catch (error) {
+          console.error('Error sending message:', error);
+        }
+    }
+
+    sendInteractiveWhatsAppMessage = async (payload: object) => {
+        const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
       
         try {
           const response = await fetch(url, {
