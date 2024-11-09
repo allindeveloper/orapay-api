@@ -9,6 +9,7 @@ export class WhatsAppService {
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
+        console.log("most recent message", mostRecentMessage);
         const name = mostRecentMessage.contacts?.[0]?.profile?.name || 'Valued Customer';
 
         const isFirstMessage = ["hello", "hi"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
@@ -18,7 +19,7 @@ export class WhatsAppService {
             await this.sendInteractiveWhatsAppMessage(payload);
             return;
         }
-
+        // might not be from an interactive list
         const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE
         if (isFromInteractiveMessage) {
             const customerChoice = mostRecentMessage.interactive?.list_reply.title
