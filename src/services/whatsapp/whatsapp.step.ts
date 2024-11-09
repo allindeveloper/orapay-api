@@ -16,10 +16,10 @@ export const initialStep = (to: string, name: string) => {
                     {
                         title: 'Services',
                         rows: [
-                            { id: '1', title: 'Open Account', description: 'Create a new account' },
-                            { id: '2', title: 'Transfer', description: 'Send money to someone' },
-                            { id: '3', title: 'Beneficiaries', description: 'Manage beneficiaries' },
-                            { id: '4', title: 'Customer Support', description: 'Get assistance' }
+                            { id: '1', title: '[1] Open Account', description: 'Create a new account' },
+                            { id: '2', title: '[2] Transfer', description: 'Send money to someone' },
+                            { id: '3', title: '[3] Beneficiaries', description: 'Manage beneficiaries' },
+                            { id: '4', title: '[4] Customer Support', description: 'Get assistance' }
                         ]
                     }
                 ]

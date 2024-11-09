@@ -9,7 +9,7 @@ export class WhatsAppService {
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
-        const name = mostRecentMessage.contacts?.[0]?.profile?.name || 'User';
+        const name = mostRecentMessage.contacts?.[0]?.profile?.name || 'Valued Customer';
         console.log("mostRecentMessage", mostRecentMessage)
         const isFirstMessage = ["hello", "hi"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
         
