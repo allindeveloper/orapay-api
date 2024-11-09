@@ -40,7 +40,7 @@ export const buttonMessage = (to: string) => ({
         action: {
             buttons: [
                 {
-                    type: 'phone_number',
+                    type: 'url',
                     phone_number: '+2347034367931',
                     text: 'Speak to Support Team'
                 }
