@@ -28,6 +28,7 @@ export class WhatsAppService {
             const customerChoice = mostRecentMessage.interactive?.list_reply.title;
 
             const stepId = mostRecentMessage.interactive?.list_reply.id ?? ""
+            console.log("Stepid", stepId)
             // handle Open option
             if (stepId.includes(steps.OPEN.OPEN)) {
                 if (customerChoice?.includes("Open Account")) {
