@@ -30,8 +30,12 @@ export class WhatsAppService {
             const stepId = mostRecentMessage.interactive?.list_reply.id ?? ""
             // handle Open option
             if (stepId.includes(steps.OPEN.OPEN)) {
-                if (steps.OPEN.OPEN_FIVE_DONE) {
+                if (customerChoice?.includes("Open Account")) {
                     await this.handleOpenSelection(fromPhoneNumber, customerName);
+                }
+                if (steps.OPEN.OPEN_FIVE_DONE) {
+                   // handle done
+                   console.log("hanle done")
                 }
                 if(steps.OPEN.OPEN_SIX_CANCEL){
                     await this.handleCancelSelection(fromPhoneNumber);
