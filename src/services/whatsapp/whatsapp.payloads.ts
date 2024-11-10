@@ -7,9 +7,8 @@ export const initialStep = (to: string, name: string) => {
         type: 'interactive',
         interactive: {
             type: 'list',
-            header: { type: 'text', text: `Hello dear ${name}` },
             body: {
-                text: `Welcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\nPlease select one of the options below.`
+                text: `Hello dear ${name} \nWelcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\nPlease select one of the options below.`
             },
             footer: { text: 'Powered by Messageframe' },
             action: {
@@ -37,7 +36,7 @@ export const buttonMessage = (to: string, supportPhoneNumber: string) => ({
     interactive: {
         type: "cta_url",
         body: {
-            text: `Thank you for contacting Orapay agent! \nHow may we assist you today?`
+            text: `Thank you for contacting Orapay service! \nClick below to speak with a customer support agent.`
         },
         action: {
             name: "cta_url",
@@ -79,7 +78,7 @@ export const cancelMessageStep = (to: string) => ({
     to,
     type: 'text',
     text: {
-        body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
+        body: `Thank you for contacting Orapay service! \nDo have a great day!`,
     },
     footer: { text: 'Powered by Messageframe' },
 })
@@ -201,9 +200,8 @@ export const welcomeOnboardMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Welcome onboard. \nFund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions :-`
+            text: `BEGIN \nWelcome onboard. \nFund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions :-`
         },
-        header: { type: 'text', text: `BEGIN` },
         footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Choose an option',
