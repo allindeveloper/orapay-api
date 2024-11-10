@@ -35,10 +35,3 @@ export type WhatsAppBody = {
         }[]
     }[]
 }
-
-export enum STEP {
-    Open = 1,
-    Transfer = 2,
-    Beneficiaries = 3,
-    CustomerSupport = 4
-}

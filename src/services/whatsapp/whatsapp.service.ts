@@ -1,39 +1,54 @@
-import { buttonMessage, initialStep } from "./whatsapp.payloads";
+import { buttonMessage, initialStep, openMessageStep } from "./whatsapp.payloads";
 import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
 
 const BASE_URL = process.env.BASE_URL;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN
+const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
+const supportPhoneNumber = process.env.SUPPORT_PHONE_NUMBER;
 export class WhatsAppService {
 
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
         console.log("most recent message", mostRecentMessage);
-        const name = mostRecentMessage.contacts?.[0]?.profile?.name || 'Valued Customer';
+        const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || 'Valued Customer';
 
         const isFirstMessage = ["hello", "hi"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
 
         if (isFirstMessage) {
-            const payload = initialStep(fromPhoneNumber, name);
+            const payload = initialStep(fromPhoneNumber, customerName);
             await this.sendInteractiveWhatsAppMessage(payload);
             return;
         }
         // might not be from an interactive list
+        // TODO: handle when someone sends a message by just typing  
         const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE
         if (isFromInteractiveMessage) {
             const customerChoice = mostRecentMessage.interactive?.list_reply.title
-            console.log("customer choice", customerChoice)
-            // handle major actions from interactive list
+
+            // handle open option
+            if (customerChoice?.includes("[1] Open Account")) {
+                await this.handleOpenSelection(fromPhoneNumber, customerName)
+            }
+
+            // handle customer support option
             if (customerChoice?.includes("Customer Support")) {
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }
     }
 
+    handleOpenSelection = async (to: string, customerName: string) => {
+            const openStepMessagePayload = openMessageStep(to, customerName);
+            await this.sendWhatsAppMessage(openStepMessagePayload);
+        
+    }
+
     handleCustomerSupport = async (to: string) => {
-        const buttonMessagePayload = buttonMessage(to);
-        await this.sendWhatsAppMessage(buttonMessagePayload);
+        if (supportPhoneNumber) {
+            const buttonMessagePayload = buttonMessage(to, supportPhoneNumber);
+            await this.sendWhatsAppMessage(buttonMessagePayload);
+        }
     }
 
     sendWhatsAppMessage = async (payload: object) => {

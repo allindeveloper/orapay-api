@@ -1,3 +1,5 @@
+import { steps } from "./whatsapp.const";
+
 export const initialStep = (to: string, name: string) => {
     return {
         messaging_product: 'whatsapp',
@@ -9,7 +11,7 @@ export const initialStep = (to: string, name: string) => {
             body: {
                 text: `Welcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\nPlease select one of the options below.`
             },
-            footer: { text: 'Powered by OraPay' },
+            footer: { text: 'Powered by Orapay' },
             action: {
                 button: 'Choose an option',
                 sections: [
@@ -28,36 +30,50 @@ export const initialStep = (to: string, name: string) => {
     }
 };
 
-export const buttonMessage = (to: string) => ({
+export const buttonMessage = (to: string, supportPhoneNumber: string) => ({
     messaging_product: 'whatsapp',
     to,
     type: 'interactive',
     interactive: {
-        type: 'button',
+        type: "cta_url",
         body: {
             text: `Thank you for contacting Orapay agent! \nHow may we assist you today?`
         },
         action: {
-            buttons: [
+            name: "cta_url",
+            parameters: {
+                display_text: "Contact Support Team",
+                url: `https://api.whatsapp.com/send?phone=${supportPhoneNumber}`
+            }
+        }
+    }
+});
+
+export const openMessageStep = (to: string, name: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        header: { type: 'text', text: `Hello dear ${name}` },
+        body: {
+            text: `Send us your details below and select done to proceed, \nNickname:\nEmail:\nState:`
+        },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Choose an option',
+            sections: [
                 {
-                    type: 'url',
-                    title: 'Speak to Support Team',
-                    url: '+2347034367931'
+                    title: 'Open',
+                    rows: [
+                        { id: steps.OPEN.OPEN_FIVE, title: '[5] Done' },
+                        { id: steps.OPEN.OPEN_SIX, title: '[6] Cancel' },
+                    ]
                 }
             ]
         }
+    },
+    context: {
+        custom_data: 'your_custom_data_here' // Include custom data here
     }
 })
-
-// export const buttonMessage = (to: string) => ({
-//     messaging_product: "whatsapp",
-//     to,
-//     type: "template",
-//     template: {
-//         name: "customersupport",
-//         language: {
-//             code: "en"
-//         }
-
-//     }
-// })
