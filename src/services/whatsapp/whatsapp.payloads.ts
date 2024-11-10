@@ -18,7 +18,7 @@ export const initialStep = (to: string, name: string) => {
                         title: 'Services',
                         rows: [
                             { id: steps.OPEN.OPEN, title: '[1] Open Account', description: 'Create a new account' },
-                            { id: '2', title: '[2] Transfer', description: 'Send money to someone' },
+                            { id: steps.TRANSFER.TRANSFER, title: '[2] Transfer', description: 'Send money to someone' },
                             { id: '3', title: '[3] Beneficiaries', description: 'Manage beneficiaries' },
                             { id: '4', title: '[4] Customer Support', description: 'Get assistance' }
                         ]
@@ -210,6 +210,32 @@ export const welcomeOnboardMessageStep = (to: string) => ({
                     title: 'Fund Wallet',
                     rows: [
                         { id: steps.OPEN.DONE.DONE_OPEN_FUND_WALLET, title: '[ok] Fund wallet' },]
+                }
+            ]
+        }
+    },
+});
+
+
+export const transferMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Send your command using voice note or chat. \nProvide below details using this format
+            \nE.g Destination Bank:, Destination Account:, Amount:`
+        },
+        footer: { text: footerText },
+        action: {
+            button: 'Choose an option',
+            sections: [
+                {
+                    title: 'Transfer',
+                    rows: [
+                        { id: steps.TRANSFER.TRANSFER_PASSWORD, title: '[P] Enter password' },
+                    ]
                 }
             ]
         }

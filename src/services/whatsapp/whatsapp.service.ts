@@ -1,4 +1,5 @@
 import { OpenAccountStep } from "./steps/openaccount";
+import { TransferStep } from "./steps/transfer";
 import { WhatsAppBaseService } from "./whatsapp.base";
 import { steps } from "./whatsapp.const";
 import { buttonMessage, cancelMessageStep, initialStep, openMessageStep } from "./whatsapp.payloads";
@@ -10,9 +11,11 @@ const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const supportPhoneNumber = process.env.SUPPORT_PHONE_NUMBER;
 export class WhatsAppService extends WhatsAppBaseService {
     private readonly openAccount;
+    private readonly transferStep;
     constructor() {
         super();
         this.openAccount = new OpenAccountStep();
+        this.transferStep = new TransferStep();
     }
 
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
@@ -85,6 +88,13 @@ export class WhatsAppService extends WhatsAppBaseService {
                 if (stepId === steps.OPEN.OPEN_CANCEL) {
                     // customer cancels the Open account step
                     await this.openAccount.handleCancelSelection(fromPhoneNumber);
+                }
+            }
+
+            // handle transfer step
+            if (stepId.includes(steps.TRANSFER.TRANSFER)) {
+                if (stepId === steps.TRANSFER.TRANSFER) {
+                    await this.transferStep.handleTransferSelection(fromPhoneNumber);
                 }
             }
 

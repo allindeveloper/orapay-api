@@ -15,6 +15,10 @@ export const steps = {
             DONE_OPEN_BEGIN: "Open-Done-Confirmed-Proceed-[9]-Begin",
             DONE_OPEN_FUND_WALLET: "Open-Done-Confirmed-Proceed-Begin-[9]-Fund wallet"
         }
+    },
+    TRANSFER: {
+        TRANSFER: "Transfer",
+        TRANSFER_PASSWORD: "Transfer-[P]-Password"
     }
 } 
 
