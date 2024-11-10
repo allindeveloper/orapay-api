@@ -47,18 +47,35 @@ export class WhatsAppService extends WhatsAppBaseService {
                     }
 
                     if (stepId === steps.OPEN.DONE.DONE_OPEN_PHONE) {
+                        // customer selected phone for verification
                         await this.openAccount.handlePhoneVerificationSelection(fromPhoneNumber);
                     }
+
                     if (stepId === steps.OPEN.DONE.DONE_OPEN_EMAIL) {
+                        // customer selected email for verification
                         await this.openAccount.handleEmailVerificationSelection(fromPhoneNumber);
                     }
+
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_CONFIRMED) {
+                        // Phone or email Verification Confirmed/Confirmation
+                        await this.openAccount.handleVerificationConfirmedSelection(fromPhoneNumber);
+                    }
+
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_DID_NOT_SEE_CODE) {
+                        // customer says they did not see the code
+                        // restart the verification process
+                        await this.openAccount.handleDoneSelection(fromPhoneNumber);
+                    }
+
                 }
                 if (stepId === steps.OPEN.OPEN_CANCEL) {
+                    // customer cancels the Open account step
                     await this.openAccount.handleCancelSelection(fromPhoneNumber);
                 }
             }
 
             if (customerChoice?.includes("Customer Support")) {
+                // customer contacts customer support
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }

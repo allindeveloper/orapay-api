@@ -8,8 +8,10 @@ export const steps = {
             DONE: "Done",
             DONE_OPEN_PHONE: "Open-Done-[7]-Phone",
             DONE_OPEN_EMAIL: "Open-Done-[8]-Email",
-            OPEN_CONFIRMED: "Open-Done-[7]-Confirmed",
-            OPEN_DID_NOT_SEE_CODE: "Open-Done-[8]-Didn’t see the code",
+            DONE_OPEN_CONFIRMED: "Open-Done-[9]-Confirmed",
+            DONE_OPEN_DID_NOT_SEE_CODE: "Open-Done-[10]-Didn’t see the code",
+            DONE_OPEN_CONFIRMED_PROCEED: "Open-Done-Confirmed-[9]-Proceed",
+            DONE_OPEN_NO_CODE_2FA: "Open-Done-Confirmed-[9]-2FA"
         }
     }
 } 

@@ -96,7 +96,7 @@ export const doneActionOpenAccountStep = (to: string) => ({
         },
         footer: { text: 'Powered by Orapay' },
         action: {
-            button: 'Choose an option',
+            button: 'Choose a verification option',
             sections: [
                 {
                     title: 'Done',
@@ -117,28 +117,45 @@ export const donePhoneEmailActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Welldone a code has been sent to your phone. \nProvide the code and confirm to complete process.`
+            text: `Welldone a code has been sent to your phone. \nPlease type the code and confirm to complete process.`
         },
         footer: { text: 'Powered by Orapay' },
         action: {
             button: 'Choose an option',
             sections: [
                 {
-                    title: 'Phone or Email',
+                    title: 'Confirmation',
                     rows: [
-                        { id: steps.OPEN.DONE.OPEN_CONFIRMED, title: '[9] Confirmed' },
-                        { id: steps.OPEN.DONE.OPEN_DID_NOT_SEE_CODE, title: '[10] Didn’t see the code' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_CONFIRMED, title: '[9] Confirmed' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_DID_NOT_SEE_CODE, title: '[10] Didn’t see the code' },
                     ]
                 }
             ]
         }
     },
-})
-// PHONE OR EMAIL 
+});
 
-// 
-
-// Code:
-
-// [9] Confirmed
-// [10] Didn’t see the code
+export const confirmedActionStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Create your security question and answer for your transaction password using this format. \nWhat is the name of my dog : Peggy`
+        },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Set Security Question',
+            sections: [
+                {
+                    title: 'Security Question',
+                    rows: [
+                        { id: steps.OPEN.DONE.DONE_OPEN_CONFIRMED_PROCEED, title: '[11] Select to proceed' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_NO_CODE_2FA, title: '[12] Add additional 2FA password (optional)' },
+                    ]
+                }
+            ]
+        }
+    },
+});
