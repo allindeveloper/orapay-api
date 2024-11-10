@@ -76,6 +76,11 @@ export class WhatsAppService extends WhatsAppBaseService {
                         // TODO:
                     }
 
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_BEGIN) {
+                        // customer has proceeded and clicked begin
+                        
+                    }
+
                 }
                 if (stepId === steps.OPEN.OPEN_CANCEL) {
                     // customer cancels the Open account step
@@ -88,6 +93,10 @@ export class WhatsAppService extends WhatsAppBaseService {
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }
+        
+        // edgecases
+        
+        // customer types 13 or begin
     }
 
     handleOpenSelection = async (to: string, customerName: string) => {

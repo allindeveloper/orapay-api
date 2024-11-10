@@ -187,7 +187,31 @@ export const proceedActionStep = (to: string) => ({
                 {
                     title: 'Begin',
                     rows: [
-                        { id: steps.OPEN.DONE.DONE_OPEN_BEGIN, title: '[13] Begin' },                    ]
+                        { id: steps.OPEN.DONE.DONE_OPEN_BEGIN, title: '[13] Begin' },]
+                }
+            ]
+        }
+    },
+});
+
+export const welcomeOnboardMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Welcome onboard. \nFund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions :-`
+        },
+        header: { type: 'text', text: `BEGIN` },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Choose an option',
+            sections: [
+                {
+                    title: 'Fund Wallet',
+                    rows: [
+                        { id: steps.OPEN.DONE.DONE_OPEN_FUND_WALLET, title: '[ok] Fund wallet' },]
                 }
             ]
         }
