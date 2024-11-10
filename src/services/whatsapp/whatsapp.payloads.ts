@@ -43,7 +43,7 @@ export const buttonMessage = (to: string, supportPhoneNumber: string) => ({
             name: "cta_url",
             parameters: {
                 display_text: "Contact Support Team",
-                url: `https://api.whatsapp.com/send?phone=${supportPhoneNumber}`
+                url: `tel:${supportPhoneNumber}`
             }
         }
     }
@@ -66,14 +66,21 @@ export const openMessageStep = (to: string, name: string) => ({
                 {
                     title: 'Open',
                     rows: [
-                        { id: steps.OPEN.OPEN_FIVE, title: '[5] Done' },
-                        { id: steps.OPEN.OPEN_SIX, title: '[6] Cancel' },
+                        { id: steps.OPEN.OPEN_FIVE_DONE, title: '[5] Done' },
+                        { id: steps.OPEN.OPEN_SIX_CANCEL, title: '[6] Cancel' },
                     ]
                 }
             ]
         }
     },
-    context: {
-        custom_data: 'your_custom_data_here' // Include custom data here
-    }
+})
+
+export const cancelMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'text',
+    text: {
+        body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
+        footer: { text: 'Powered by Orapay' },
+    },
 })

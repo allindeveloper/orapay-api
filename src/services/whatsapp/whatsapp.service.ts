@@ -1,4 +1,5 @@
-import { buttonMessage, initialStep, openMessageStep } from "./whatsapp.payloads";
+import { steps } from "./whatsapp.const";
+import { buttonMessage, cancelMessageStep, initialStep, openMessageStep } from "./whatsapp.payloads";
 import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
 
 const BASE_URL = process.env.BASE_URL;
@@ -22,26 +23,36 @@ export class WhatsAppService {
         }
         // might not be from an interactive list
         // TODO: handle when someone sends a message by just typing  
-        const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE
+        const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE;
         if (isFromInteractiveMessage) {
-            const customerChoice = mostRecentMessage.interactive?.list_reply.title
+            const customerChoice = mostRecentMessage.interactive?.list_reply.title;
 
-            // handle open option
-            if (customerChoice?.includes("[1] Open Account")) {
-                await this.handleOpenSelection(fromPhoneNumber, customerName)
+            const stepId = mostRecentMessage.interactive?.list_reply.id ?? ""
+            // handle Open option
+            if (steps.OPEN.OPEN.includes(stepId)) {
+                if (steps.OPEN.OPEN_FIVE_DONE) {
+                    await this.handleOpenSelection(fromPhoneNumber, customerName);
+                }
+                if(steps.OPEN.OPEN_SIX_CANCEL){
+                    await this.handleCancelSelection(fromPhoneNumber);
+                }
             }
 
-            // handle customer support option
             if (customerChoice?.includes("Customer Support")) {
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }
     }
 
+    handleCancelSelection = async (to: string) => {
+        const openStepMessagePayload = cancelMessageStep(to);
+        await this.sendWhatsAppMessage(openStepMessagePayload);
+    }
+
     handleOpenSelection = async (to: string, customerName: string) => {
-            const openStepMessagePayload = openMessageStep(to, customerName);
-            await this.sendWhatsAppMessage(openStepMessagePayload);
-        
+        const openStepMessagePayload = openMessageStep(to, customerName);
+        await this.sendWhatsAppMessage(openStepMessagePayload);
+
     }
 
     handleCustomerSupport = async (to: string) => {
