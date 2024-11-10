@@ -101,11 +101,44 @@ export const doneActionOpenAccountStep = (to: string) => ({
                 {
                     title: 'Done',
                     rows: [
-                        { id: steps.OPEN.DONE.OPEN_PHONE, title: '[7] Phone' },
-                        { id: steps.OPEN.DONE.OPEN_EMAIL, title: '[8] Email' },
+                        { id: steps.OPEN.DONE.PHONE, title: '[7] Phone' },
+                        { id: steps.OPEN.DONE.EMAIL, title: '[8] Email' },
                     ]
                 }
             ]
         }
     },
 })
+
+export const donePhoneEmailActionStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Welldone a code has been sent to your phone. \nProvide the code and confirm to complete process.`
+        },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Choose an option',
+            sections: [
+                {
+                    title: 'Phone or Email',
+                    rows: [
+                        { id: steps.OPEN.DONE.OPEN_CONFIRMED, title: '[9] Confirmed' },
+                        { id: steps.OPEN.DONE.OPEN_DID_NOT_SEE_CODE, title: '[10] Didn’t see the code' },
+                    ]
+                }
+            ]
+        }
+    },
+})
+// PHONE OR EMAIL 
+
+// 
+
+// Code:
+
+// [9] Confirmed
+// [10] Didn’t see the code

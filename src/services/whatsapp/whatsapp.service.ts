@@ -43,6 +43,13 @@ export class WhatsAppService extends WhatsAppBaseService {
                 }
                 if (stepId === steps.OPEN.OPEN_DONE) {
                     await this.openAccount.handleDoneSelection(fromPhoneNumber);
+
+                    if(stepId === steps.OPEN.DONE.PHONE){
+                        await this.openAccount.handlePhoneVerificationSelection(fromPhoneNumber);
+                    }
+                    if(stepId === steps.OPEN.DONE.EMAIL){
+                        await this.openAccount.handlePhoneVerificationSelection(fromPhoneNumber);
+                    }
                 }
                 if (stepId === steps.OPEN.OPEN_CANCEL) {
                     await this.openAccount.handleCancelSelection(fromPhoneNumber);

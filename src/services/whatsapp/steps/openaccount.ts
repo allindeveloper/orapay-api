@@ -1,11 +1,10 @@
 import { WhatsAppBaseService } from "../whatsapp.base";
-import { cancelMessageStep, doneActionOpenAccountStep } from "../whatsapp.payloads";
+import { cancelMessageStep, doneActionOpenAccountStep, donePhoneEmailActionStep } from "../whatsapp.payloads";
 
 export class OpenAccountStep extends WhatsAppBaseService {
     constructor() {
         super();
     }
-
 
     handleCancelSelection = async (to: string) => {
         const openStepMessagePayload = cancelMessageStep(to);
@@ -13,7 +12,17 @@ export class OpenAccountStep extends WhatsAppBaseService {
     }
 
     handleDoneSelection = async (to:string) => {
-        const openStepMessagePayload = doneActionOpenAccountStep(to);
-        await this.sendWhatsAppMessage(openStepMessagePayload);
+        const doneMessagePayload = doneActionOpenAccountStep(to);
+        await this.sendWhatsAppMessage(doneMessagePayload);
+    }
+
+    handlePhoneVerificationSelection = async (to:string) => {
+        const emailStepPayload = donePhoneEmailActionStep(to);
+        await this.sendWhatsAppMessage(emailStepPayload);
+    }
+
+    handleEmailVerificationSelection = async (to:string) => {
+        const emailStepPayload = donePhoneEmailActionStep(to);
+        await this.sendWhatsAppMessage(emailStepPayload);
     }
 }
