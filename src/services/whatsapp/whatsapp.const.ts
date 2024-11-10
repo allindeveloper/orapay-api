@@ -11,7 +11,8 @@ export const steps = {
             DONE_OPEN_CONFIRMED: "Open-Done-[9]-Confirmed",
             DONE_OPEN_DID_NOT_SEE_CODE: "Open-Done-[10]-Didn’t see the code",
             DONE_OPEN_CONFIRMED_PROCEED: "Open-Done-Confirmed-[9]-Proceed",
-            DONE_OPEN_NO_CODE_2FA: "Open-Done-Confirmed-[9]-2FA"
+            DONE_OPEN_NO_CODE_2FA: "Open-Done-Confirmed-[9]-2FA",
+            DONE_OPEN_BEGIN: "Open-Done-Confirmed-Proceed-[9]-Begin"
         }
     }
 } 

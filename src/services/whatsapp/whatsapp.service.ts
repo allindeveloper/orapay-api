@@ -63,8 +63,17 @@ export class WhatsAppService extends WhatsAppBaseService {
 
                     if (stepId === steps.OPEN.DONE.DONE_OPEN_DID_NOT_SEE_CODE) {
                         // customer says they did not see the code
-                        // restart the verification process
-                        await this.openAccount.handleDoneSelection(fromPhoneNumber);
+                        await this.openAccount.handleDidNotSeeCodeSelection(fromPhoneNumber);
+                    }
+
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_CONFIRMED_PROCEED) {
+                        // customer has set their security question and clicked proceed
+                        await this.openAccount.handleProceedAfterSecurityQuestionSelection(fromPhoneNumber);
+                    }
+
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_NO_CODE_2FA) {
+                        // customer has set their security question and want to set additional 2FA
+                        // TODO:
                     }
 
                 }

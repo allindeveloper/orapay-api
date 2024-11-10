@@ -159,3 +159,37 @@ export const confirmedActionStep = (to: string) => ({
         }
     },
 });
+
+export const didNotSeeCodeActionStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'text',
+    text: {
+        body: `Sorry wait a minute`,
+    },
+    footer: { text: 'Powered by Orapay' },
+});
+
+
+export const proceedActionStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin`
+        },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Click to Begin',
+            sections: [
+                {
+                    title: 'Begin',
+                    rows: [
+                        { id: steps.OPEN.DONE.DONE_OPEN_BEGIN, title: '[13] Begin' },                    ]
+                }
+            ]
+        }
+    },
+});
