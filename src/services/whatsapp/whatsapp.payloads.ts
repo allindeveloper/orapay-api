@@ -11,7 +11,7 @@ export const initialStep = (to: string, name: string) => {
             body: {
                 text: `Welcome to Orapay service, your chatbot financial agent. Run secured financial errands through *WhatsApp* once you open an account. \n\nPlease select one of the options below.`
             },
-            footer: { text: 'Powered by Orapay' },
+            footer: { text: 'Powered by Messageframe' },
             action: {
                 button: 'Choose an option',
                 sections: [
@@ -56,9 +56,9 @@ export const openMessageStep = (to: string, name: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Send us your details below and select done to proceed, \nNickname:\nEmail:\nState:`
+            text: `Send us your details and select done to proceed from the options below, \nNickname:\nEmail:\nState of residence:`
         },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Choose an option',
             sections: [
@@ -81,7 +81,7 @@ export const cancelMessageStep = (to: string) => ({
     text: {
         body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
     },
-    footer: { text: 'Powered by Orapay' },
+    footer: { text: 'Powered by Messageframe' },
 })
 
 
@@ -94,9 +94,9 @@ export const doneActionOpenAccountStep = (to: string) => ({
         body: {
             text: `Congratulations you are set. Verify this account using preferred verification options.`
         },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
-            button: 'Choose a verification option',
+            button: 'Choose an option',
             sections: [
                 {
                     title: 'Done',
@@ -119,7 +119,7 @@ export const donePhoneEmailActionStep = (to: string) => ({
         body: {
             text: `Welldone a code has been sent to your phone. \nPlease type the code and confirm to complete process.`
         },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Choose an option',
             sections: [
@@ -144,7 +144,7 @@ export const confirmedActionStep = (to: string) => ({
         body: {
             text: `Create your security question and answer for your transaction password using this format. \nWhat is the name of my dog : Peggy`
         },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Set Security Question',
             sections: [
@@ -167,7 +167,7 @@ export const didNotSeeCodeActionStep = (to: string) => ({
     text: {
         body: `Sorry wait a minute`,
     },
-    footer: { text: 'Powered by Orapay' },
+    footer: { text: 'Powered by Messageframe' },
 });
 
 
@@ -180,7 +180,7 @@ export const proceedActionStep = (to: string) => ({
         body: {
             text: `While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin`
         },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Click to Begin',
             sections: [
@@ -204,7 +204,7 @@ export const welcomeOnboardMessageStep = (to: string) => ({
             text: `Welcome onboard. \nFund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions :-`
         },
         header: { type: 'text', text: `BEGIN` },
-        footer: { text: 'Powered by Orapay' },
+        footer: { text: 'Powered by Messageframe' },
         action: {
             button: 'Choose an option',
             sections: [
