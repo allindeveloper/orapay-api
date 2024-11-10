@@ -65,8 +65,8 @@ export const openMessageStep = (to: string, name: string) => ({
                 {
                     title: 'Open',
                     rows: [
-                        { id: steps.OPEN.OPEN_FIVE_DONE, title: '[5] Done' },
-                        { id: steps.OPEN.OPEN_SIX_CANCEL, title: '[6] Cancel' },
+                        { id: steps.OPEN.OPEN_DONE, title: '[5] Done' },
+                        { id: steps.OPEN.OPEN_CANCEL, title: '[6] Cancel' },
                     ]
                 }
             ]
@@ -82,4 +82,30 @@ export const cancelMessageStep = (to: string) => ({
         body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
     },
     footer: { text: 'Powered by Orapay' },
+})
+
+
+export const doneActionOpenAccountStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Congratulations you are set. Verify this account using preferred verification options.`
+        },
+        footer: { text: 'Powered by Orapay' },
+        action: {
+            button: 'Choose an option',
+            sections: [
+                {
+                    title: 'Done',
+                    rows: [
+                        { id: steps.OPEN.DONE.OPEN_PHONE, title: '[7] Phone' },
+                        { id: steps.OPEN.DONE.OPEN_EMAIL, title: '[8] Email' },
+                    ]
+                }
+            ]
+        }
+    },
 })
