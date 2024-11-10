@@ -55,7 +55,6 @@ export const openMessageStep = (to: string, name: string) => ({
     type: 'interactive',
     interactive: {
         type: 'list',
-        header: { type: 'text', text: `Hello dear ${name}` },
         body: {
             text: `Send us your details below and select done to proceed, \nNickname:\nEmail:\nState:`
         },
@@ -82,4 +81,5 @@ export const cancelMessageStep = (to: string) => ({
     text: {
         body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
     },
+    footer: { text: 'Powered by Orapay' },
 })

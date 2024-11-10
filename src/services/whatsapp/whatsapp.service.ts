@@ -1,3 +1,5 @@
+import { OpenAccountStep } from "./steps/openaccount";
+import { WhatsAppBaseService } from "./whatsapp.base";
 import { steps } from "./whatsapp.const";
 import { buttonMessage, cancelMessageStep, initialStep, openMessageStep } from "./whatsapp.payloads";
 import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
@@ -6,7 +8,12 @@ const BASE_URL = process.env.BASE_URL;
 const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
 const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
 const supportPhoneNumber = process.env.SUPPORT_PHONE_NUMBER;
-export class WhatsAppService {
+export class WhatsAppService extends WhatsAppBaseService {
+    private readonly openAccount;
+    constructor() {
+        super();
+        this.openAccount = new OpenAccountStep();
+    }
 
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
@@ -35,11 +42,11 @@ export class WhatsAppService {
                     await this.handleOpenSelection(fromPhoneNumber, customerName);
                 }
                 if (stepId === steps.OPEN.OPEN_FIVE_DONE) {
-                   // handle done
-                   console.log("hanle done")
+                    // handle done
+                    console.log("handle done")
                 }
-                if(stepId === steps.OPEN.OPEN_SIX_CANCEL){
-                    await this.handleCancelSelection(fromPhoneNumber);
+                if (stepId === steps.OPEN.OPEN_SIX_CANCEL) {
+                    await this.openAccount.handleCancelSelection(fromPhoneNumber);
                 }
             }
 
@@ -47,11 +54,6 @@ export class WhatsAppService {
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }
-    }
-
-    handleCancelSelection = async (to: string) => {
-        const openStepMessagePayload = cancelMessageStep(to);
-        await this.sendWhatsAppMessage(openStepMessagePayload);
     }
 
     handleOpenSelection = async (to: string, customerName: string) => {
@@ -64,26 +66,6 @@ export class WhatsAppService {
         if (supportPhoneNumber) {
             const buttonMessagePayload = buttonMessage(to, supportPhoneNumber);
             await this.sendWhatsAppMessage(buttonMessagePayload);
-        }
-    }
-
-    sendWhatsAppMessage = async (payload: object) => {
-        const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
-
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${ACCESS_TOKEN}`,
-                },
-                body: JSON.stringify(payload),
-            });
-
-            const data = await response.json();
-            console.log('Message sent:', data);
-        } catch (error) {
-            console.error('Error sending message:', error);
         }
     }
 
