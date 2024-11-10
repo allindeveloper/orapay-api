@@ -34,11 +34,11 @@ export class WhatsAppService {
                 if (customerChoice?.includes("Open Account")) {
                     await this.handleOpenSelection(fromPhoneNumber, customerName);
                 }
-                if (steps.OPEN.OPEN_FIVE_DONE) {
+                if (stepId === steps.OPEN.OPEN_FIVE_DONE) {
                    // handle done
                    console.log("hanle done")
                 }
-                if(steps.OPEN.OPEN_SIX_CANCEL){
+                if(stepId === steps.OPEN.OPEN_SIX_CANCEL){
                     await this.handleCancelSelection(fromPhoneNumber);
                 }
             }

@@ -81,6 +81,5 @@ export const cancelMessageStep = (to: string) => ({
     type: 'text',
     text: {
         body: `Thank you for contacting Orapay agent! \nDo have a great day!`,
-        footer: { text: 'Powered by Orapay' },
     },
 })
