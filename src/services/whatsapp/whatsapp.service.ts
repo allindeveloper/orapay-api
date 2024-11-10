@@ -29,7 +29,7 @@ export class WhatsAppService {
 
             const stepId = mostRecentMessage.interactive?.list_reply.id ?? ""
             // handle Open option
-            if (steps.OPEN.OPEN.includes(stepId)) {
+            if (stepId.includes(steps.OPEN.OPEN)) {
                 if (steps.OPEN.OPEN_FIVE_DONE) {
                     await this.handleOpenSelection(fromPhoneNumber, customerName);
                 }
