@@ -17,3 +17,5 @@ export const steps = {
         }
     }
 } 
+
+export const footerText = `Powered by Messageframe ®️`;
