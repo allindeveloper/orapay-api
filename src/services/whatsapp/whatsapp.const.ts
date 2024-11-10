@@ -5,8 +5,9 @@ export const steps = {
         OPEN_DONE: "Open-[5]-Done",
         OPEN_CANCEL: "Open-[6]-Cancel",
         DONE: {
-            PHONE: "Open[7]-Phone",
-            EMAIL: "Open[8]-Email",
+            DONE: "Done",
+            DONE_OPEN_PHONE: "Open[7]-Phone",
+            DONE_OPEN_EMAIL: "Open[8]-Email",
             OPEN_CONFIRMED: "Open[7]-Phone",
             OPEN_DID_NOT_SEE_CODE: "Open[8]-Didn’t see the code",
         }

@@ -101,8 +101,8 @@ export const doneActionOpenAccountStep = (to: string) => ({
                 {
                     title: 'Done',
                     rows: [
-                        { id: steps.OPEN.DONE.PHONE, title: '[7] Phone' },
-                        { id: steps.OPEN.DONE.EMAIL, title: '[8] Email' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_PHONE, title: '[7] Phone' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_EMAIL, title: '[8] Email' },
                     ]
                 }
             ]
