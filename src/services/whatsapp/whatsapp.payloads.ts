@@ -224,17 +224,17 @@ export const transferMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Send your command using voice note or chat. \nProvide below details using this format
-            \nE.g Destination Bank:, Destination Account:, Amount:`
+            text: `Send your command using voice note or chat. \nProvide below details and click proceed
+            \nE.g Destination Bank:, Destination Account:, Amount: and Password`
         },
         footer: { text: footerText },
         action: {
-            button: 'Choose an option',
+            button: 'Proceed',
             sections: [
                 {
                     title: 'Transfer',
                     rows: [
-                        { id: steps.TRANSFER.TRANSFER_PASSWORD, title: '[P] Enter password' },
+                        { id: steps.TRANSFER.TRANSFER_PASSWORD, title: '[P] Proceed' },
                     ]
                 }
             ]
