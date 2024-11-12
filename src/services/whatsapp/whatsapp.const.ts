@@ -19,6 +19,9 @@ export const steps = {
     TRANSFER: {
         TRANSFER: "Transfer",
         TRANSFER_PROCEED: "Transfer-[P]-Proceed"
+    },
+    BENEFICIARIES: {
+        BENEFICIARIES: "BENEFICIARIES",
     }
 } 
 

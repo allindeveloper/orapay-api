@@ -19,7 +19,7 @@ export const initialStep = (to: string, name: string) => {
                         rows: [
                             { id: steps.OPEN.OPEN, title: '[1] Open Account', description: 'Create a new account' },
                             { id: steps.TRANSFER.TRANSFER, title: '[2] Transfer', description: 'Send money to someone' },
-                            { id: '3', title: '[3] Beneficiaries', description: 'Manage beneficiaries' },
+                            { id: steps.BENEFICIARIES.BENEFICIARIES, title: '[3] Beneficiaries', description: 'Manage beneficiaries' },
                             { id: '4', title: '[4] Customer Support', description: 'Get assistance' }
                         ]
                     }
