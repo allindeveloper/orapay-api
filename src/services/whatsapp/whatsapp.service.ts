@@ -1,3 +1,4 @@
+import { database } from "db/database";
 import { BeneficiariesStep } from "./steps/beneficiaries";
 import { OpenAccountStep } from "./steps/openaccount";
 import { TransferStep } from "./steps/transfer";
@@ -20,7 +21,9 @@ export class WhatsAppService extends WhatsAppBaseService {
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
-
+        database.push({
+            phoneNumber: fromPhoneNumber,
+        })
         const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
 
         const greetings = ["hello", "hi", "hey"];
@@ -33,6 +36,8 @@ export class WhatsAppService extends WhatsAppBaseService {
             await this.sendInteractiveWhatsAppMessage(payload);
             return;
         }
+
+        console.log("database data", JSON.stringify(database))
         // might not be from an interactive list
         // TODO: handle when someone sends a message by just typing  
         const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE;

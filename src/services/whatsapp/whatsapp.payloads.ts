@@ -8,7 +8,7 @@ export const initialStep = (to: string, name: string) => {
         interactive: {
             type: 'list',
             body: {
-                text: `_Hello dear_ ${name} \n\n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes.*_ \n_Please select one of the options below._`
+                text: `_Hello dear_ ${name} \n\n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes.*_`
             },
             footer: { text: footerText },
             action: {
@@ -116,7 +116,7 @@ export const donePhoneEmailActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `_Welldone a code has been sent to your phone._ \n_Please type the code and confirm to complete process._`
+            text: `_Your verification code has been sent to your preferred option confirm to complete process._`
         },
         footer: { text: footerText },
         action: {
@@ -141,7 +141,7 @@ export const confirmedActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `_Create your security question and answer for your transaction password using this format._ \nWhat is the name of my dog : Peggy`
+            text: `_Create your security question and answer using the hint below._ \nWhat is the name of my dog : Peggy`
         },
         footer: { text: footerText },
         action: {
