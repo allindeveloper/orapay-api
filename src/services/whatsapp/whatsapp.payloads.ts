@@ -145,7 +145,7 @@ export const confirmedActionStep = (to: string) => ({
         },
         footer: { text: footerText },
         action: {
-            button: 'Set Security Question',
+            button: 'Security Question',
             sections: [
                 {
                     title: 'Security Question',
