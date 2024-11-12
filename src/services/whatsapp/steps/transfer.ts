@@ -16,5 +16,4 @@ export class TransferStep extends WhatsAppBaseService {
         await this.sendWhatsAppMessage(processingRequestMessagePayload);
     }
 
-
 }

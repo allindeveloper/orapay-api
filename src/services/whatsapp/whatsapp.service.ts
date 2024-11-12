@@ -1,3 +1,4 @@
+import { BeneficiariesStep } from "./steps/beneficiaries";
 import { OpenAccountStep } from "./steps/openaccount";
 import { TransferStep } from "./steps/transfer";
 import { WhatsAppBaseService } from "./whatsapp.base";
@@ -8,10 +9,12 @@ import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
 export class WhatsAppService extends WhatsAppBaseService {
     private readonly openAccount;
     private readonly transferStep;
+    private readonly beneficiariesStep;
     constructor() {
         super();
         this.openAccount = new OpenAccountStep();
         this.transferStep = new TransferStep();
+        this.beneficiariesStep = new BeneficiariesStep();
     }
 
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
@@ -103,6 +106,31 @@ export class WhatsAppService extends WhatsAppBaseService {
                 }
             }
 
+            // handle beneficiaries step
+            if (stepId.includes(steps.BENEFICIARIES.BENEFICIARIES)) {
+
+                if (stepId === steps.BENEFICIARIES.BENEFICIARIES) {
+                    await this.beneficiariesStep.handleBeneficiariesSelection(fromPhoneNumber)
+                }
+
+                if (stepId === steps.BENEFICIARIES.BENEFICIARIES_CREATE) {
+                    await this.beneficiariesStep.handleBeneficiariesCreateSelection(fromPhoneNumber)
+                }
+
+                if (stepId === steps.BENEFICIARIES.BENEFICIARIES_CREATE_PROCEED) {
+                    await this.beneficiariesStep.handleBeneficiariesCreateProceedSelection(fromPhoneNumber)
+                }
+
+                // Edit
+                if (stepId === steps.BENEFICIARIES.BENEFICIARIES_EDIT) {
+                    await this.beneficiariesStep.handleBeneficiariesEditSelection(fromPhoneNumber)
+                }
+
+                if (stepId === steps.BENEFICIARIES.BENEFICIARIES_EDIT_PROCEED) {
+                    await this.beneficiariesStep.handleBeneficiariesEditProceedSelection(fromPhoneNumber)
+                }
+            }
+
             if (customerChoice?.includes("Customer Support")) {
                 // customer contacts customer support
                 await this.handleCustomerSupport(fromPhoneNumber)
@@ -112,6 +140,12 @@ export class WhatsAppService extends WhatsAppBaseService {
         // edgecases
 
         // customer types 13 or begin
+        if (!isFromInteractiveMessage) {
+
+            if (mostRecentMessage.text?.body === "13") {
+                await this.openAccount.handleBeginSelection(fromPhoneNumber)
+            }
+        }
     }
 
     handleOpenSelection = async (to: string, customerName: string) => {
@@ -125,34 +159,6 @@ export class WhatsAppService extends WhatsAppBaseService {
         if (supportPhoneNumber) {
             const buttonMessagePayload = buttonMessage(to, supportPhoneNumber);
             await this.sendWhatsAppMessage(buttonMessagePayload);
-        }
-    }
-
-    sendRegularWhatsAppMessage = async (to: string, message: string) => {
-        const { BASE_URL, PHONE_NUMBER_ID, ACCESS_TOKEN } = envVariables;
-        const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
-
-        const payload = {
-            messaging_product: 'whatsapp',
-            to,
-            type: 'text',
-            text: { body: message },
-        };
-
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${ACCESS_TOKEN}`,
-                },
-                body: JSON.stringify(payload),
-            });
-
-            const data = await response.json();
-            console.log('Message sent:', data);
-        } catch (error) {
-            console.error('Error sending message:', error);
         }
     }
 

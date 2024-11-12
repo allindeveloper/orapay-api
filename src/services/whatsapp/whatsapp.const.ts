@@ -22,10 +22,14 @@ export const steps = {
     },
     BENEFICIARIES: {
         BENEFICIARIES: "BENEFICIARIES",
+        BENEFICIARIES_CREATE: "BENEFICIARIES-CREATE[+]-Create",
+        BENEFICIARIES_EDIT: "BENEFICIARIES-CREATE[+]-Edit",
+        BENEFICIARIES_CREATE_PROCEED: "BENEFICIARIES-CREATE[+]-Create-Proceed",
+        BENEFICIARIES_EDIT_PROCEED: "BENEFICIARIES-CREATE[+]-Edit-Proceed"
     }
 } 
 
-export const footerText = `Powered by Messageframe®️`;
+export const footerText = `v1.0 Powered by Messageframe®️`;
 
 export const envVariables = {
     BASE_URL: process.env.BASE_URL,

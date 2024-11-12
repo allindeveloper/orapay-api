@@ -252,12 +252,86 @@ export const transferMessageStep = (to: string) => ({
     },
 });
 
-export const processingRequestMessageStep = (to: string) => ({
+export const processingRequestMessageStep = (to: string, message?: string) => ({
     messaging_product: 'whatsapp',
     to,
     type: 'text',
     text: {
-        body: `Processing your request...`,
+        body: message || `Processing your request...`,
     },
     footer: { text: footerText },
-})
+});
+
+export const beneficiariesMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `Create your list of beneficiaries. \nAll names and must be unique.`
+        },
+        footer: { text: footerText },
+        action: {
+            button: 'Select option',
+            sections: [
+                {
+                    title: 'Beneficiaries',
+                    rows: [
+                        { id: steps.BENEFICIARIES.BENEFICIARIES_CREATE, title: '[14] Add beneficiaries' },
+                        { id: steps.BENEFICIARIES.BENEFICIARIES_EDIT, title: '[15] Edit beneficiaries' },
+                    ]
+                }
+            ]
+        }
+    },
+});
+
+
+export const beneficiariesAddMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `ADD BENEFICIARIES \n\nSend names acct. & bank name followed by + _ to create list \nE.g\n\nKevin Bayem, 0000000000, Orapay`
+        },
+        footer: { text: footerText },
+        action: {
+            button: 'Select option',
+            sections: [
+                {
+                    title: 'Proceed',
+                    rows: [
+                        { id: steps.BENEFICIARIES.BENEFICIARIES_CREATE_PROCEED, title: '[+] Create list' },
+                    ]
+                }
+            ]
+        }
+    },
+});
+
+export const beneficiariesEditMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `EDIT \n\nEdit and send names acct. & bank name followed by + sign _ to update list \nE.g\n\nKevin Bayem, 0000000000, Orapay`
+        },
+        footer: { text: footerText },
+        action: {
+            button: 'Select option',
+            sections: [
+                {
+                    title: 'Proceed',
+                    rows: [
+                        { id: steps.BENEFICIARIES.BENEFICIARIES_EDIT_PROCEED, title: '[+] Edit and Proceed' },
+                    ]
+                }
+            ]
+        }
+    },
+});
