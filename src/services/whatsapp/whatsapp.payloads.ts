@@ -36,7 +36,7 @@ export const buttonMessage = (to: string, supportPhoneNumber: string) => ({
     interactive: {
         type: "cta_url",
         body: {
-            text: `Thank you for contacting Orapay service! \nClick below to speak with a customer support agent.`
+            text: `_Thank you for contacting Orapay service! \nClick below to speak with a customer support agent._`
         },
         action: {
             name: "cta_url",
