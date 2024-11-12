@@ -8,7 +8,7 @@ export const initialStep = (to: string, name: string) => {
         interactive: {
             type: 'list',
             body: {
-                text: `_Hello dear_ ${name} \n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes* once you open an account._ \n\n_Please select one of the options below._`
+                text: `_Hello dear_ ${name} \n\n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes* once you open an account._ \n\n_Please select one of the options below._`
             },
             footer: { text: footerText },
             action: {
