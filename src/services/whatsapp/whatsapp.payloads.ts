@@ -229,15 +229,25 @@ export const transferMessageStep = (to: string) => ({
         },
         footer: { text: footerText },
         action: {
-            button: 'Proceed',
+            button: 'Select option',
             sections: [
                 {
                     title: 'Transfer',
                     rows: [
-                        { id: steps.TRANSFER.TRANSFER_PASSWORD, title: '[P] Proceed' },
+                        { id: steps.TRANSFER.TRANSFER_PROCEED, title: '[P] Proceed' },
                     ]
                 }
             ]
         }
     },
 });
+
+export const processingRequestMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'text',
+    text: {
+        body: `Processing your request...`,
+    },
+    footer: { text: footerText },
+})

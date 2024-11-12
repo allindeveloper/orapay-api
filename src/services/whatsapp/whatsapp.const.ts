@@ -18,7 +18,7 @@ export const steps = {
     },
     TRANSFER: {
         TRANSFER: "Transfer",
-        TRANSFER_PASSWORD: "Transfer-[P]-Password"
+        TRANSFER_PROCEED: "Transfer-[P]-Proceed"
     }
 } 
 

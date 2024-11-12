@@ -92,6 +92,10 @@ export class WhatsAppService extends WhatsAppBaseService {
                 if (stepId === steps.TRANSFER.TRANSFER) {
                     await this.transferStep.handleTransferSelection(fromPhoneNumber);
                 }
+
+                if (stepId === steps.TRANSFER.TRANSFER_PROCEED) {
+                    await this.transferStep.handleProceedSelection(fromPhoneNumber);
+                }
             }
 
             if (customerChoice?.includes("Customer Support")) {
