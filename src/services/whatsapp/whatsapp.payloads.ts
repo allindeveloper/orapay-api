@@ -151,7 +151,7 @@ export const confirmedActionStep = (to: string) => ({
                     title: 'Security Question',
                     rows: [
                         { id: steps.OPEN.DONE.DONE_OPEN_CONFIRMED_PROCEED, title: '[11] Select to proceed' },
-                        { id: steps.OPEN.DONE.DONE_OPEN_NO_CODE_2FA, title: '[12] Add additional 2FA password (optional)' },
+                        { id: steps.OPEN.DONE.DONE_OPEN_NO_CODE_2FA, title: '[12] Add 2FA password' },
                     ]
                 }
             ]
