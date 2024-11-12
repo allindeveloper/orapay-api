@@ -20,10 +20,13 @@ export class WhatsAppService extends WhatsAppBaseService {
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
-        console.log("most recent message", mostRecentMessage);
+
         const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
 
-        const isFirstMessage = ["hello", "hi", "hey"].includes((mostRecentMessage.text?.body ?? "").toLowerCase());
+        const greetings = ["hello", "hi", "hey"];
+        const isFirstMessage = greetings.some(greet =>
+            (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
+        );
 
         if (isFirstMessage) {
             const payload = initialStep(fromPhoneNumber, customerName);
@@ -37,7 +40,6 @@ export class WhatsAppService extends WhatsAppBaseService {
             const customerChoice = mostRecentMessage.interactive?.list_reply.title;
 
             const stepId = mostRecentMessage.interactive?.list_reply.id ?? ""
-            console.log("Stepid", stepId)
             // handle Open option
             if (stepId.includes(steps.OPEN.OPEN)) {
                 if (customerChoice?.includes("Open Account")) {
