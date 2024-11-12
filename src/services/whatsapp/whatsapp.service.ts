@@ -77,7 +77,12 @@ export class WhatsAppService extends WhatsAppBaseService {
 
                     if (stepId === steps.OPEN.DONE.DONE_OPEN_BEGIN) {
                         // customer has proceeded and clicked begin
+                        await this.openAccount.handleBeginSelection(fromPhoneNumber)
+                    }
 
+                    if (stepId === steps.OPEN.DONE.DONE_OPEN_FUND_WALLET) {
+                        // customer has proceeded and clicked begin
+                        await this.openAccount.handleSendFundWalletSelection(fromPhoneNumber)
                     }
 
                 }

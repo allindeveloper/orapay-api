@@ -216,6 +216,16 @@ export const welcomeOnboardMessageStep = (to: string) => ({
     },
 });
 
+export const fundWalletMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'text',
+    text: {
+        body: `FUND \n\nFund wallet and send receipt afterwards \n\nBank name *:Moniepoint* \nCopy account *:Number*`,
+    },
+    footer: { text: footerText },
+});
+
 
 export const transferMessageStep = (to: string) => ({
     messaging_product: 'whatsapp',
