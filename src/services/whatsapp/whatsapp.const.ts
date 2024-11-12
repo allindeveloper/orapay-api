@@ -23,3 +23,10 @@ export const steps = {
 } 
 
 export const footerText = `Powered by Messageframe®️`;
+
+export const envVariables = {
+    BASE_URL: process.env.BASE_URL,
+    PHONE_NUMBER_ID: process.env.PHONE_NUMBER_ID,
+    ACCESS_TOKEN: process.env.ACCESS_TOKEN,
+    supportPhoneNumber: process.env.SUPPORT_PHONE_NUMBER,
+};

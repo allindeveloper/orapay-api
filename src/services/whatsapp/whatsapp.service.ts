@@ -1,14 +1,10 @@
 import { OpenAccountStep } from "./steps/openaccount";
 import { TransferStep } from "./steps/transfer";
 import { WhatsAppBaseService } from "./whatsapp.base";
-import { steps } from "./whatsapp.const";
-import { buttonMessage, cancelMessageStep, initialStep, openMessageStep } from "./whatsapp.payloads";
+import { envVariables, steps } from "./whatsapp.const";
+import { buttonMessage, initialStep, openMessageStep } from "./whatsapp.payloads";
 import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
 
-const BASE_URL = process.env.BASE_URL;
-const PHONE_NUMBER_ID = process.env.PHONE_NUMBER_ID;
-const ACCESS_TOKEN = process.env.ACCESS_TOKEN;
-const supportPhoneNumber = process.env.SUPPORT_PHONE_NUMBER;
 export class WhatsAppService extends WhatsAppBaseService {
     private readonly openAccount;
     private readonly transferStep;
@@ -81,7 +77,7 @@ export class WhatsAppService extends WhatsAppBaseService {
 
                     if (stepId === steps.OPEN.DONE.DONE_OPEN_BEGIN) {
                         // customer has proceeded and clicked begin
-                        
+
                     }
 
                 }
@@ -103,9 +99,9 @@ export class WhatsAppService extends WhatsAppBaseService {
                 await this.handleCustomerSupport(fromPhoneNumber)
             }
         }
-        
+
         // edgecases
-        
+
         // customer types 13 or begin
     }
 
@@ -116,6 +112,7 @@ export class WhatsAppService extends WhatsAppBaseService {
     }
 
     handleCustomerSupport = async (to: string) => {
+        const { supportPhoneNumber } = envVariables;
         if (supportPhoneNumber) {
             const buttonMessagePayload = buttonMessage(to, supportPhoneNumber);
             await this.sendWhatsAppMessage(buttonMessagePayload);
@@ -123,6 +120,7 @@ export class WhatsAppService extends WhatsAppBaseService {
     }
 
     sendRegularWhatsAppMessage = async (to: string, message: string) => {
+        const { BASE_URL, PHONE_NUMBER_ID, ACCESS_TOKEN } = envVariables;
         const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
 
         const payload = {
@@ -150,6 +148,7 @@ export class WhatsAppService extends WhatsAppBaseService {
     }
 
     sendInteractiveWhatsAppMessage = async (payload: object) => {
+        const { BASE_URL, PHONE_NUMBER_ID, ACCESS_TOKEN } = envVariables;
         const url = `${BASE_URL}/${PHONE_NUMBER_ID}/messages`;
 
         try {
