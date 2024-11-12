@@ -25,6 +25,7 @@ export class WhatsAppService extends WhatsAppBaseService {
             phoneNumber: fromPhoneNumber,
         })
         const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
+        console.log("database data", JSON.stringify(database))
 
         const greetings = ["hello", "hi", "hey"];
         const isFirstMessage = greetings.some(greet =>
@@ -37,7 +38,6 @@ export class WhatsAppService extends WhatsAppBaseService {
             return;
         }
 
-        console.log("database data", JSON.stringify(database))
         // might not be from an interactive list
         // TODO: handle when someone sends a message by just typing  
         const isFromInteractiveMessage = mostRecentMessage.type === MessageType.INTERACTIVE;
