@@ -55,7 +55,7 @@ export const openMessageStep = (to: string, name: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `OPEN \n_Send us your details and select done to proceed from the options below,_ \nNickname:\nEmail:\nState of residence:`
+            text: `OPEN \n\n_Send us your details and select done to proceed from the options below,_ \nNickname:\nEmail:\nState of residence:`
         },
         footer: { text: footerText },
         action: {
@@ -91,7 +91,7 @@ export const doneActionOpenAccountStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `DONE \n_Congratulations you are set. Verify this account using preferred verification options._`
+            text: `DONE \n\n_Congratulations you are set. Verify this account using preferred verification options._`
         },
         footer: { text: footerText },
         action: {
@@ -116,7 +116,7 @@ export const donePhoneEmailActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `PHONE OR EMAIL \n_Welldone a code has been sent to your phone._ \n_Please type the code and confirm to complete process._`
+            text: `PHONE OR EMAIL \n\n_Welldone a code has been sent to your phone._ \n_Please type the code and confirm to complete process._`
         },
         footer: { text: footerText },
         action: {
@@ -164,7 +164,7 @@ export const didNotSeeCodeActionStep = (to: string) => ({
     to,
     type: 'text',
     text: {
-        body: `DIDNT GET CODE \n_Sorry wait a minute_`,
+        body: `DIDNT GET CODE \n\n_Sorry wait a minute_`,
     },
     footer: { text: footerText },
 });
@@ -177,7 +177,7 @@ export const proceedActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `PROCEED \n_While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin_`
+            text: `PROCEED \n\n_While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin_`
         },
         footer: { text: footerText },
         action: {
@@ -200,7 +200,7 @@ export const welcomeOnboardMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `BEGIN \n_Welcome onboard._ \n_Fund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions_ :-`
+            text: `BEGIN \n\n_Welcome onboard._ \n_Fund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions_ :-`
         },
         footer: { text: footerText },
         action: {
@@ -234,7 +234,7 @@ export const transferMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `TRANSFER \n_Send your command using voice note or chat._ \n_Provide below details and click proceed
+            text: `TRANSFER \n\n_Send your command using voice note or chat._ \n_Provide below details and click proceed
             \nE.g Destination Bank:, Destination Account:, Amount: and Password`
         },
         footer: { text: footerText },
@@ -269,7 +269,7 @@ export const beneficiariesMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `BENEFICIARIES \n_Create your list of beneficiaries._ \n_All names and must be unique._`
+            text: `BENEFICIARIES \n\n_Create your list of beneficiaries._ \n_All names and must be unique._`
         },
         footer: { text: footerText },
         action: {
