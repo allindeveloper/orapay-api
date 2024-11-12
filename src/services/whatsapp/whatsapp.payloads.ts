@@ -295,7 +295,7 @@ export const beneficiariesAddMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `ADD BENEFICIARIES \n\n_Send names acct. & bank name followed by_ + _ to create list_ \nE.g\n\nKevin Bayem, 0000000000, Orapay`
+            text: `ADD BENEFICIARIES \n\n_Send names acct. & bank name followed by_ + _ _to create list_ \nE.g\n\nKevin Bayem, 0000000000, Orapay`
         },
         footer: { text: footerText },
         action: {
