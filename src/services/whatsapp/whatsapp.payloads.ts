@@ -8,7 +8,7 @@ export const initialStep = (to: string, name: string) => {
         interactive: {
             type: 'list',
             body: {
-                text: `Hello dear ${name} \nWelcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes* once you open an account. \n\nPlease select one of the options below.`
+                text: `_Hello dear_ ${name} \n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes* once you open an account._ \n\n_Please select one of the options below._`
             },
             footer: { text: footerText },
             action: {
@@ -55,7 +55,7 @@ export const openMessageStep = (to: string, name: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Send us your details and select done to proceed from the options below, \nNickname:\nEmail:\nState of residence:`
+            text: `OPEN \n_Send us your details and select done to proceed from the options below,_ \nNickname:\nEmail:\nState of residence:`
         },
         footer: { text: footerText },
         action: {
@@ -91,7 +91,7 @@ export const doneActionOpenAccountStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Congratulations you are set. Verify this account using preferred verification options.`
+            text: `DONE \n_Congratulations you are set. Verify this account using preferred verification options._`
         },
         footer: { text: footerText },
         action: {
@@ -116,7 +116,7 @@ export const donePhoneEmailActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Welldone a code has been sent to your phone. \nPlease type the code and confirm to complete process.`
+            text: `PHONE OR EMAIL \n_Welldone a code has been sent to your phone._ \n_Please type the code and confirm to complete process._`
         },
         footer: { text: footerText },
         action: {
@@ -141,7 +141,7 @@ export const confirmedActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Create your security question and answer for your transaction password using this format. \nWhat is the name of my dog : Peggy`
+            text: `_Create your security question and answer for your transaction password using this format._ \nWhat is the name of my dog : Peggy`
         },
         footer: { text: footerText },
         action: {
@@ -164,7 +164,7 @@ export const didNotSeeCodeActionStep = (to: string) => ({
     to,
     type: 'text',
     text: {
-        body: `Sorry wait a minute`,
+        body: `DIDNT GET CODE \n_Sorry wait a minute_`,
     },
     footer: { text: footerText },
 });
@@ -177,7 +177,7 @@ export const proceedActionStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin`
+            text: `PROCEED \n_While your transaction is processing you may now *take note of password and delete on WhatsApp* send 13 to begin_`
         },
         footer: { text: footerText },
         action: {
@@ -200,7 +200,7 @@ export const welcomeOnboardMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `BEGIN \nWelcome onboard. \nFund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions :-`
+            text: `BEGIN \n_Welcome onboard._ \n_Fund your wallet through Messageframe to begin the use of voice-notes for subsequent transactions_ :-`
         },
         footer: { text: footerText },
         action: {
@@ -221,7 +221,7 @@ export const fundWalletMessageStep = (to: string) => ({
     to,
     type: 'text',
     text: {
-        body: `FUND \n\nFund wallet and send receipt afterwards \n\nBank name *:Moniepoint* \nCopy account *:Number*`,
+        body: `FUND \n\n_Fund wallet and send receipt afterwards_ \n\nBank name *:Moniepoint* \nCopy account *:Number*`,
     },
     footer: { text: footerText },
 });
@@ -234,7 +234,7 @@ export const transferMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Send your command using voice note or chat. \nProvide below details and click proceed
+            text: `TRANSFER \n_Send your command using voice note or chat._ \n_Provide below details and click proceed
             \nE.g Destination Bank:, Destination Account:, Amount: and Password`
         },
         footer: { text: footerText },
@@ -257,7 +257,7 @@ export const processingRequestMessageStep = (to: string, message?: string) => ({
     to,
     type: 'text',
     text: {
-        body: message || `Processing your request...`,
+        body: message || `_Processing your request..._`,
     },
     footer: { text: footerText },
 });
@@ -269,7 +269,7 @@ export const beneficiariesMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `Create your list of beneficiaries. \nAll names and must be unique.`
+            text: `BENEFICIARIES \n_Create your list of beneficiaries._ \n_All names and must be unique._`
         },
         footer: { text: footerText },
         action: {
@@ -295,7 +295,7 @@ export const beneficiariesAddMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `ADD BENEFICIARIES \n\nSend names acct. & bank name followed by + _ to create list \nE.g\n\nKevin Bayem, 0000000000, Orapay`
+            text: `ADD BENEFICIARIES \n\n_Send names acct. & bank name followed by_ + _ to create list_ \nE.g\n\nKevin Bayem, 0000000000, Orapay`
         },
         footer: { text: footerText },
         action: {
@@ -319,7 +319,7 @@ export const beneficiariesEditMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `EDIT \n\nEdit and send names acct. & bank name followed by + sign _ to update list \nE.g\n\nKevin Bayem, 0000000000, Orapay`
+            text: `EDIT \n\n_Edit and send names acct. & bank name followed by_ + sign _ to update list_ \nE.g\n\nKevin Bayem, 0000000000, Orapay`
         },
         footer: { text: footerText },
         action: {
