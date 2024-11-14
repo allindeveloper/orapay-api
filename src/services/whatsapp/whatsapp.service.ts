@@ -1,4 +1,3 @@
-import { database } from "db/database";
 import { BeneficiariesStep } from "./steps/beneficiaries";
 import { OpenAccountStep } from "./steps/openaccount";
 import { TransferStep } from "./steps/transfer";
@@ -28,7 +27,7 @@ export class WhatsAppService extends WhatsAppBaseService {
         const isFirstMessage = greetings.some(greet =>
             (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
         );
-        
+
         if (isFirstMessage) {
             const payload = initialStep(fromPhoneNumber, customerName);
             await this.sendInteractiveWhatsAppMessage(payload);
