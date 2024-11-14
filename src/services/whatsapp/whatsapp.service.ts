@@ -21,17 +21,14 @@ export class WhatsAppService extends WhatsAppBaseService {
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
-        database.push({
-            phoneNumber: fromPhoneNumber,
-        })
-        const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
-        console.log("database data", JSON.stringify(database))
 
-        const greetings = ["hello", "hi", "hey"];
+        const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
+
+        const greetings = ["hello ", "hi", "hey"];
         const isFirstMessage = greetings.some(greet =>
             (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
         );
-
+        
         if (isFirstMessage) {
             const payload = initialStep(fromPhoneNumber, customerName);
             await this.sendInteractiveWhatsAppMessage(payload);

@@ -234,7 +234,7 @@ export const transferMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `_Send your command using voice note or chat._ \n_Provide below details and click proceed_
+            text: `_Send your command using voice note or chat._ Provide below details and click proceed_
             \nE.g Destination Bank:, Destination Account:, Amount: and Password`
         },
         footer: { text: footerText },
