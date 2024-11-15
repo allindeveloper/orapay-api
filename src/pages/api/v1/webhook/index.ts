@@ -33,7 +33,7 @@ export default async function handler(
       res.status(404).send('No message found');
       return;
     }
-
+    console.log("changes", body.entry[0].changes[0]);
     const allMessages = body.entry[0].changes[0].value.messages;
 
     await whatsappService.triggerMessagesLogic(allMessages)
