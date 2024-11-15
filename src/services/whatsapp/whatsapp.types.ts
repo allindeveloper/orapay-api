@@ -31,6 +31,7 @@ export type WhatsAppBody = {
         changes: {
             value: {
                 messages: WhatsAppMessagePayload[]
+                contacts: any
             }
         }[]
     }[]
