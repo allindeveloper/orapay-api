@@ -22,7 +22,8 @@ export class WhatsAppService extends WhatsAppBaseService {
         const fromPhoneNumber = mostRecentMessage.from;
 
         const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
-
+        console.log("mostRecentMessage", mostRecentMessage)
+        console.log("mostRecentMessage Profile ", mostRecentMessage.contacts?.[0])
         const greetings = ["hello ", "hi", "hey"];
         const isFirstMessage = greetings.some(greet =>
             (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
