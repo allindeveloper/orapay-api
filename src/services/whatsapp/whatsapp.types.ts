@@ -12,6 +12,12 @@ export type WhatsAppMessageInteractive = {
     }
 }
 
+export type WhatsAppContact = {
+    profile?: {
+        name?: string
+    }
+}
+
 export type WhatsAppMessagePayload = {
     text?: {
         body: string
@@ -19,11 +25,7 @@ export type WhatsAppMessagePayload = {
     type: MessageType;
     interactive?: WhatsAppMessageInteractive
     from: string
-    contacts: {
-        profile?: {
-            name?: string
-        }
-    }[]
+    contacts: WhatsAppContact[]
 }
 
 export type WhatsAppBody = {
@@ -31,7 +33,7 @@ export type WhatsAppBody = {
         changes: {
             value: {
                 messages: WhatsAppMessagePayload[]
-                contacts: any
+                contacts: WhatsAppContact[]
             }
         }[]
     }[]

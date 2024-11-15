@@ -28,15 +28,15 @@ export default async function handler(
   } else if (req.method === 'POST') {
     // Handle incoming messages
     const body = <WhatsAppBody>req.body;
-    console.log("stringify body", body);
+
     if (!(body && body.entry && body.entry[0].changes && body.entry[0].changes[0].value.messages)) {
       res.status(404).send('No message found');
       return;
     }
-    console.log("contacts", body.entry[0].changes[0].value.contacts[0]);
+    const allContacts =  body.entry[0].changes[0].value.contacts;
     const allMessages = body.entry[0].changes[0].value.messages;
 
-    await whatsappService.triggerMessagesLogic(allMessages)
+    await whatsappService.triggerMessagesLogic(allMessages, allContacts)
 
     res.status(200).send('EVENT_RECEIVED');
   

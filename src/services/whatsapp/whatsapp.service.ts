@@ -4,7 +4,7 @@ import { TransferStep } from "./steps/transfer";
 import { WhatsAppBaseService } from "./whatsapp.base";
 import { envVariables, steps } from "./whatsapp.const";
 import { buttonMessage, initialStep, openMessageStep } from "./whatsapp.payloads";
-import { MessageType, WhatsAppMessagePayload } from "./whatsapp.types";
+import { MessageType, WhatsAppContact, WhatsAppMessagePayload } from "./whatsapp.types";
 
 export class WhatsAppService extends WhatsAppBaseService {
     private readonly openAccount;
@@ -17,13 +17,12 @@ export class WhatsAppService extends WhatsAppBaseService {
         this.beneficiariesStep = new BeneficiariesStep();
     }
 
-    triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[]) => {
+    triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[], allContacts: WhatsAppContact[]) => {
         const mostRecentMessage = messageDto[0];
         const fromPhoneNumber = mostRecentMessage.from;
-        console.log("mostRecentMessage initial", JSON.stringify(messageDto))
-        const customerName = mostRecentMessage.contacts?.[0]?.profile?.name || '';
-        console.log("mostRecentMessage", mostRecentMessage)
-        console.log("mostRecentMessage Profile ", mostRecentMessage.contacts?.[0])
+
+        const customerName = allContacts?.[0]?.profile?.name || '';
+
         const greetings = ["hello ", "hi", "hey"];
         const isFirstMessage = greetings.some(greet =>
             (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
