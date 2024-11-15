@@ -28,7 +28,7 @@ export default async function handler(
   } else if (req.method === 'POST') {
     // Handle incoming messages
     const body = <WhatsAppBody>req.body;
-
+    console.log("log the whole body", body)
     if (!(body && body.entry && body.entry[0].changes && body.entry[0].changes[0].value.messages)) {
       res.status(404).send('No message found');
       return;
