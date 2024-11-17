@@ -23,7 +23,7 @@ export class WhatsAppService extends WhatsAppBaseService {
 
         const customerName = allContacts?.[0]?.profile?.name || '';
 
-        const greetings = ["hello ", "hi", "hey"];
+        const greetings = ["hello", "hi", "hey"];
         const isFirstMessage = greetings.some(greet =>
             (mostRecentMessage.text?.body ?? "").toLowerCase().includes(greet)
         );
