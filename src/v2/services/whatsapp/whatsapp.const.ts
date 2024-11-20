@@ -19,7 +19,13 @@ export const steps = {
     VENDOR: {
         VENDOR: "Vendor",
         VENDOR_SELF_SERVICE: "Vendor-Self-Service-[1]",
-        VENDOR_SELF_REQUEST: "Vendor-Self-Service-[1]-Request"
+        VENDOR_SELF_REQUEST: "Vendor-Self-Service-[2]-Request"
+    },
+    POS: {
+        POS: "Pos",
+        POS_TRANSFER: "Pos-Transfer-[1]",
+        POS_WITHDRAW: "Pos-Transfer-Withdraw-[1]",
+        POS_MINT_REQUEST: "Pos-Transfer-MintRequest-[1]"
     }
 } 
 

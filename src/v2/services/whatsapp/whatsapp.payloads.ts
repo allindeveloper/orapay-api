@@ -19,7 +19,8 @@ export const initialStep = (to: string, name: string) => {
                         rows: [
                             { id: steps.OPEN.OPEN, title: '[1] Open Account', description: 'Create a new account' },
                             { id: steps.VENDOR.VENDOR, title: '[3] Vendor Services', description: 'Manage requests' },
-                            { id: '4', title: '[4] Contact POS agent', description: 'Get assistance' }
+                            { id: steps.POS.POS, title: '[4] Point of Sale (POS)', description: 'POS service' },
+                            { id: '4', title: '[5] Contact POS agent', description: 'Get assistance' }
                         ]
                     }
                 ]
@@ -243,7 +244,7 @@ export const vendorServicesMessageStep = (to: string) => ({
     interactive: {
         type: 'list',
         body: {
-            text: `_Select onf of your preferred options to service your request_`
+            text: `_Select one of your preferred options to service your request_`
         },
         footer: { text: footerText },
         action: {
@@ -297,4 +298,30 @@ export const selfRequestMessage = (to: string, name: string) => ({
             }
         }
     }
+});
+
+export const posServiceMessageStep = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: 'list',
+        body: {
+            text: `_Select one of the preferred options to proceed_`
+        },
+        footer: { text: footerText },
+        action: {
+            button: 'Select option',
+            sections: [
+                {
+                    title: 'Vendor Services',
+                    rows: [
+                        { id: steps.POS.POS, title: '[1] Transfer' },
+                        { id: steps.POS.POS_WITHDRAW, title: '[2] Withdrawal' },
+                        { id: steps.POS.POS_MINT_REQUEST, title: '[3] Mint Request' },
+                    ]
+                }
+            ]
+        }
+    },
 });
