@@ -19,7 +19,7 @@ export const initialStep = (to: string, name: string) => {
                         rows: [
                             { id: steps.OPEN.OPEN, title: '[1] Open Account', description: 'Create a new account' },
                             { id: steps.VENDOR.VENDOR, title: '[3] Vendor Services', description: 'Manage requests' },
-                            { id: '4', title: '[4] Customer Support', description: 'Get assistance' }
+                            { id: '4', title: '[4] Contact POS agent', description: 'Get assistance' }
                         ]
                     }
                 ]
@@ -40,7 +40,7 @@ export const buttonMessage = (to: string, supportPhoneNumber: string) => ({
         action: {
             name: "cta_url",
             parameters: {
-                display_text: "Contact Support Team",
+                display_text: "Contact POS agent",
                 url: `tel:${supportPhoneNumber}`
             }
         }
