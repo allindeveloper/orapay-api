@@ -338,7 +338,7 @@ export const posFinalMessage = (to: string) => ({
             name: "cta_url",
             parameters: {
                 display_text: "Self Request Link",
-                url: `https://api.whatsapp.com/send?phone=2348120848396&text=${encodeURIComponent("Hello please grant this request")}`
+                url: `https://api.whatsapp.com/send?phone=2348120848396`
             }
         }
     }
