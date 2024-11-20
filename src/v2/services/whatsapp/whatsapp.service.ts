@@ -4,14 +4,17 @@ import { WhatsAppBaseService } from "./whatsapp.base";
 import { envVariables, steps } from "./whatsapp.const";
 import { buttonMessage, initialStep, openMessageStep } from "./whatsapp.payloads";
 import { MessageType, WhatsAppContact, WhatsAppMessagePayload } from "./whatsapp.types";
+import { PosServiceStep } from "./steps/pos";
 
 export class WhatsAppService extends WhatsAppBaseService {
     private readonly openAccount;
     private readonly vendorServices;
+    private readonly posService;
     constructor() {
         super();
         this.openAccount = new OpenAccountStep();
         this.vendorServices = new VendorServicesStep();
+        this.posService = new PosServiceStep();
     }
 
     triggerMessagesLogic = async (messageDto: WhatsAppMessagePayload[], allContacts: WhatsAppContact[]) => {
@@ -107,6 +110,22 @@ export class WhatsAppService extends WhatsAppBaseService {
 
                 if(stepId === steps.VENDOR.VENDOR_SELF_REQUEST){
                     await this.vendorServices.handleSelfRequestSelection(fromPhoneNumber, customerName);
+                }
+                
+            }
+
+            // handle pos services step
+            if (stepId.includes(steps.POS.POS)) {
+                if(stepId === steps.POS.POS){
+                    await this.posService.handlePosServicesSelection(fromPhoneNumber);
+                }
+
+                if(stepId === steps.POS.POS_TRANSFER){
+                    await this.posService.handleTransferSelection(fromPhoneNumber);
+                }
+
+                if(stepId === steps.POS.POS_WITHDRAW){
+                    await this.posService.handleMintRequestSelection(fromPhoneNumber);
                 }
                 
             }

@@ -1,5 +1,5 @@
 import { WhatsAppBaseService } from "../whatsapp.base";
-import { posServiceMessageStep, selfRequestMessage, selfServiceMessage } from "../whatsapp.payloads";
+import { posFinalMessage, posServiceMessageStep, selfRequestMessage, selfServiceMessage } from "../whatsapp.payloads";
 
 export class PosServiceStep extends WhatsAppBaseService {
     constructor() {
@@ -11,14 +11,19 @@ export class PosServiceStep extends WhatsAppBaseService {
         await this.sendWhatsAppMessage(posServiceMessagePayload);
     }
 
-    handleSelfServiceSelection = async (to: string) => {
-        const selfServiceMessagePayload = selfServiceMessage(to);
-        await this.sendWhatsAppMessage(selfServiceMessagePayload);
+    handleTransferSelection = async (to: string) => {
+        const posFinalMessagePayload = posFinalMessage(to);
+        await this.sendWhatsAppMessage(posFinalMessagePayload);
     }
 
-    handleSelfRequestSelection = async (to: string, name: string) => {
-        const selfRequestMessagePayload = selfRequestMessage(to, name);
-        await this.sendWhatsAppMessage(selfRequestMessagePayload);
+    handleWithdrawalSelection = async (to: string) => {
+        const withdrawalMessagePayload = posFinalMessage(to);
+        await this.sendWhatsAppMessage(withdrawalMessagePayload);
+    }
+
+    handleMintRequestSelection = async (to: string) => {
+        const mintRequestPayload = posFinalMessage(to);
+        await this.sendWhatsAppMessage(mintRequestPayload);
     }
 
 }

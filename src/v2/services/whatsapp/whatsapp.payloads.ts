@@ -325,3 +325,22 @@ export const posServiceMessageStep = (to: string) => ({
         }
     },
 });
+
+export const posFinalMessage = (to: string) => ({
+    messaging_product: 'whatsapp',
+    to,
+    type: 'interactive',
+    interactive: {
+        type: "cta_url",
+        body: {
+            text: `Click to contact via chat or call`
+        },
+        action: {
+            name: "cta_url",
+            parameters: {
+                display_text: "Self Request Link",
+                url: `https://wa.me/2348120848396?text=Hello please i want to send a mesage`
+            }
+        }
+    }
+});
