@@ -29,7 +29,7 @@ export const steps = {
     }
 } 
 
-export const footerText = `V2.0  Powered by Messageframe®️`;
+export const footerText = `V1.0  Powered by Messageframe®️`;
 
 export const envVariables = {
     BASE_URL: process.env.BASE_URL,
