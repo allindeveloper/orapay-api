@@ -19,7 +19,7 @@ export const initialStep = (to: string, name: string) => {
                         rows: [
                             { id: steps.VENDOR.VENDOR, title: '[1] Vendor Services', description: 'Manage requests' },
                             { id: steps.POS.POS, title: '[2] Point of Sale (POS)', description: 'POS service' },
-                            { id: '3', title: '[3] Contact Support', description: 'Get assistance' }
+                            { id: '3', title: '[3] Customer Support', description: 'Get assistance' }
                         ]
                     }
                 ]
