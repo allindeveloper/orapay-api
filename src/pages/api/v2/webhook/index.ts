@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { WhatsAppService } from 'v1/services/whatsapp/whatsapp.service';
-import { WhatsAppBody } from 'v1/services/whatsapp/whatsapp.types';
+import { WhatsAppService } from 'v2/services/whatsapp/whatsapp.service';
+import { WhatsAppBody } from 'v2/services/whatsapp/whatsapp.types';
 
 const VERIFY_TOKEN = 'kevinpaywebhooktoken';
 
