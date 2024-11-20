@@ -274,7 +274,7 @@ export const selfServiceMessage = (to: string) => ({
             name: "cta_url",
             parameters: {
                 display_text: "Self Service Link",
-                url: `https://shorturl.at/hWwlH`
+                url: `https://messageframenft.company.site`
             }
         }
     }
