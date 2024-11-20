@@ -1,5 +1,5 @@
 import { WhatsAppBaseService } from "../whatsapp.base";
-import { posFinalMessage, posServiceMessageStep, selfRequestMessage, selfServiceMessage } from "../whatsapp.payloads";
+import { posFinalMessage, posServiceMessageStep } from "../whatsapp.payloads";
 
 export class PosServiceStep extends WhatsAppBaseService {
     constructor() {

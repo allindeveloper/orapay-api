@@ -24,8 +24,8 @@ export const steps = {
     POS: {
         POS: "Pos",
         POS_TRANSFER: "Pos-Transfer-[1]",
-        POS_WITHDRAW: "Pos-Transfer-Withdraw-[1]",
-        POS_MINT_REQUEST: "Pos-Transfer-MintRequest-[1]"
+        POS_WITHDRAW: "Pos-Transfer-Withdraw-[2]",
+        POS_MINT_REQUEST: "Pos-Transfer-MintRequest-[3]"
     }
 } 
 

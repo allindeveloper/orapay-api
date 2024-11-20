@@ -125,6 +125,10 @@ export class WhatsAppService extends WhatsAppBaseService {
                 }
 
                 if(stepId === steps.POS.POS_WITHDRAW){
+                    await this.posService.handleWithdrawalSelection(fromPhoneNumber);
+                }
+
+                if(stepId === steps.POS.POS_MINT_REQUEST){
                     await this.posService.handleMintRequestSelection(fromPhoneNumber);
                 }
                 
