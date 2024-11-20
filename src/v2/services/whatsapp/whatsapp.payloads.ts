@@ -339,7 +339,8 @@ export const posFinalMessage = (to: string) => ({
             name: "cta_url",
             parameters: {
                 display_text: "Self Request Link",
-                url: `https://wa.me/2348120848396?text=Hello please i want to send a mesage`
+                url: "tel:08120848396"
+                // url: `https://wa.me/2348120848396?text=Hello please i want to send a mesage`
             }
         }
     }
