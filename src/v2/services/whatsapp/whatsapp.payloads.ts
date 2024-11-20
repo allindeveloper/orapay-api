@@ -8,7 +8,7 @@ export const initialStep = (to: string, name: string) => {
         interactive: {
             type: 'list',
             body: {
-                text: `_Hello dear_ _${name}_ \n_Welcome to Orapay service, your  agency banking chatbot. Run secured financial errands through *WhatsApp voice notes.*_`
+                text: `_Hello _${name}_, \n_Welcome to Orapay service, your financial chatbot. Run secured errands through *WhatsApp voice notes.*_`
             },
             footer: { text: footerText },
             action: {
@@ -287,7 +287,7 @@ export const selfRequestMessage = (to: string, name: string) => ({
     interactive: {
         type: "cta_url",
         body: {
-            text: `_Hello dear_ _${name}_ \n_Glad to be of service to you, engage messageframe bot via voice note or chat using the link to run this errands:_`
+            text: `_Hello _${name}_, \n_Glad to be of service to you, engage messageframe bot via voice note or chat using the link to run this errands:_`
         },
         action: {
             name: "cta_url",
