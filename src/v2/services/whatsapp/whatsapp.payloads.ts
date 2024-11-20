@@ -316,7 +316,7 @@ export const posServiceMessageStep = (to: string) => ({
                 {
                     title: 'Vendor Services',
                     rows: [
-                        { id: steps.POS.POS, title: '[1] Transfer' },
+                        { id: steps.POS.POS_TRANSFER, title: '[1] Transfer' },
                         { id: steps.POS.POS_WITHDRAW, title: '[2] Withdrawal' },
                         { id: steps.POS.POS_MINT_REQUEST, title: '[3] Mint Request' },
                     ]
@@ -339,7 +339,7 @@ export const posFinalMessage = (to: string) => ({
             name: "cta_url",
             parameters: {
                 display_text: "Self Request Link",
-                url: "https://api.whatsapp.com/send?phone=2348120848396"
+                url: `https://api.whatsapp.com/send?phone=2348120848396&text=${encodeURIComponent("Hello please grant this request")}`
             }
         }
     }
